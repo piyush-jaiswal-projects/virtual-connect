@@ -25,7 +25,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
   
 app.get('/', (req: Request, res: Response) => {
-    res.send('Welcome to Virtual Connect!!')
+    res.send('Welcome to Virtual Connect Server!!')
 });
   
 app.listen(process.env.SERVER_PORT, () => {
