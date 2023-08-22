@@ -5,9 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && tsc",
-    "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
     "start": "nodemon app.ts"
   },
   "author": "Piyush Jaiswal",
@@ -31,10 +28,5 @@
   },
   "devDependencies": {
     "ts-node-dev": "^2.0.0"
-  },
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ]
+  }
 }
