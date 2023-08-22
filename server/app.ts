@@ -20,13 +20,19 @@ const corsOptions = {
     allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization', // Allowed headers
     credentials: true,
     maxAge: 800,
-  };
+};
+  
+const authRouter = require('./routes/auth-route')
+const otpRouter = require('./routes/otp-route')
   
 app.use(cors(corsOptions));
   
 app.get('/', (req: Request, res: Response) => {
     res.send('Welcome to Virtual Connect Server!!')
 });
+
+app.use('/api/user', authRouter)
+app.use('/api/otp', otpRouter)
   
 app.listen(process.env.SERVER_PORT, () => {
     console.log(`>>>>> Nodejs Applications is listening on port ${process.env.SERVER_PORT}!`)
