@@ -19,10 +19,10 @@ export default function Home() {
 
         <div className="flex justify-start items-center">
           <button className="bg-[black] border hover:bg-[#ffffff] hover:text-black h-[50px] w-[200px] rounded-lg mr-5 p-2 text-white">
-            Start Meeting
+            Get Started
           </button>
 
-          <div className="flex justify-center items-center h-[50px] p-0">
+          {/* <div className="flex justify-center items-center h-[50px] p-0">
             <input
               className="border border-black outline-none h-[50px] rounded-l-lg border-r-0 p-2"
               type="text"
@@ -31,7 +31,7 @@ export default function Home() {
             <button className="bg-black h-[50px] text-white w-[50px] rounded-r-lg border border-black">
               Join
             </button>
-          </div>
+          </div> */}
         </div>
       </section>
 

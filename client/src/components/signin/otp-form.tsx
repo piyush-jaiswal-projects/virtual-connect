@@ -6,6 +6,7 @@ export default function OtpForm(props: { email: string }) {
   const submitOtp = () => {
     // api call to verfy otp and redirect on success
     // add access token to cookies
+    window.location.replace("/dashboard")
   };
 
   return (

@@ -6,6 +6,7 @@ export default function SigninForm() {
   const [passType, setPassType] = React.useState("password");
   const [form, setForm] = React.useState({
     email: "",
+    name: "",
     password: "",
   });
 
@@ -36,13 +37,26 @@ export default function SigninForm() {
       <OtpForm email={form.email} />
       <div
         id="signin-form"
-        className="p-4 w-[30vw] bg-white mx-auto rounded-lg translate-up"
+        className="p-4 w-[30vw] bg-white mx-auto relative top-[50px] translate-up border rounded-lg"
       >
         <h1 className="text-[1.8rem]">Signin</h1>
 
         <p className={status.isError ? "text-[red]" : "text-[green]"}>
           {status.msg}
         </p>
+
+        <input
+          type="text"
+          placeholder="Name"
+          className="w-[100%] border outline-none rounded-lg h-[40px] p-2 my-2"
+          value={form.name}
+          onChange={(e) => {
+            setForm({
+              ...form,
+              name: e.target.value,
+            });
+          }}
+        />
 
         <input
           type="email"

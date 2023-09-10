@@ -6,15 +6,10 @@ const authControllers = require('../controllers/auth-controllers')
 const router = express.Router()
 
 
-router.post('/register', [
+router.post('/signin', [
     check('name').notEmpty(),
     check('email').normalizeEmail().isEmail(), 
     check('password').isLength({min:6}),
 ], authControllers.Register)
-
-router.post('/login', [
-    check('email').normalizeEmail().isEmail(), 
-    check('password').isLength({min:6}),
-], authControllers.Login)
 
 module.exports = router
