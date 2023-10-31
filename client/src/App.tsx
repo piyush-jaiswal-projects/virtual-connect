@@ -10,15 +10,15 @@ import Dashboard from "./components/dashboard/dashboard";
 function App() {
   return (
     <div className="App">
-      <Header />
       <BrowserRouter>
+      <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
-      </BrowserRouter>
       <Footer />
+      </BrowserRouter>
     </div>
   );
 }

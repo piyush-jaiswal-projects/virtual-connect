@@ -3,7 +3,8 @@ import { Logo } from "../../logo";
 
 export default function Header() {
   return (
-    <div className="custom-shadow overflow-hidden p-2 px-4 h-[60px] w-[100vw] flex justify-between items-center">
+    <div className="custom-shadow overflow-hidden p-2 px-4 h-[60px] w-[100vw] flex 
+    justify-between items-center">
       <div>
         <a href="/">
           <img src={Logo} alt="VIRTUAL CONNECT" width={300} height={40} />
