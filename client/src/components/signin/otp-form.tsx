@@ -12,7 +12,7 @@ export default function OtpForm(props: { email: string }) {
   return (
     <div
       id="otp-form"
-      className="p-4 w-[30vw] hidden bg-white mx-auto rounded-lg translate-up"
+      className="p-4 w-[95vw] lg:w-[30vw] hidden bg-white mx-auto rounded-lg lg:translate-y-[-150px]"
     >
       <h1 className="text-[1.8rem]">Verify email</h1>
       <p>Please enter OTP sent to {props.email} </p>

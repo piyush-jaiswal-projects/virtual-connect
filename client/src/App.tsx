@@ -6,19 +6,22 @@ import Footer from "./components/footer/footer";
 import Home from "./components/home/home";
 import Signin from "./components/signin/signin";
 import Dashboard from "./components/dashboard/dashboard";
+import CustomToastContainer from "./toast/toast";
+
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
       <Header />
+      <CustomToastContainer />
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
-      <Footer />
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }

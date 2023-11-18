@@ -15,13 +15,3 @@ div, p{
 .custom-shadow{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
-.translate-up{
-  transition: transform 2s ease;
-  transform: translateY(-150px);
-}
-
-.translate-XY-custom{
-  transition: transform 2s ease;
-  transform: translate(-100px, 80px);
-}

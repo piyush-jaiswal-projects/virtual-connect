@@ -37,7 +37,7 @@ export default function SigninForm() {
       <OtpForm email={form.email} />
       <div
         id="signin-form"
-        className="p-4 w-[30vw] bg-white mx-auto relative top-[50px] translate-up border rounded-lg"
+        className="p-4 w-[95vw] lg:w-[30vw] bg-white mx-auto relative lg:top-[50px] lg:translate-y-[-150px] border rounded-lg"
       >
         <h1 className="text-[1.8rem]">Signin</h1>
 
