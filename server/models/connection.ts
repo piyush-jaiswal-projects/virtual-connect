@@ -1,10 +1,13 @@
+import { UserData } from "../types/user.types";
 import pool from "./pool";
 
-async function executeQuery(queryText: string, params?: []) {
+const errorData: UserData[] = [];
+
+async function executeQuery(queryText: string, params?: string[]) {
   try {
     const client = await pool.connect();
     const res = await client.query(queryText, params);
-    // console.log(res);
+
     client.release();
     return {
       data: res.rows,
@@ -13,6 +16,7 @@ async function executeQuery(queryText: string, params?: []) {
   } catch (error) {
     console.error("Unexpected error executing query: ", error);
     return {
+      data: errorData,
       error: "error executing query",
       success: false,
     };
