@@ -8,6 +8,7 @@ import os from "os";
 import http from "http";
 import path from "path";
 import { Server, Socket } from "socket.io";
+import {ConnectDBInstance, DisconnectDB} from "./database/connection";
 
 console.log(`>>>>> Node Environment is ${process.env.NODE_ENV}`);
 
