@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:prod": "node app.ts",
-    "start:dev": "nodemon app.ts"
+    "start:dev": "nodemon app.ts",
+    "create-tables": "ts-node ./models/migration.ts",
+    "drop-tables": "ts-node ./models/migration.ts DropTables"
   },
   "author": "Piyush Jaiswal",
   "license": "ISC",
@@ -26,6 +28,7 @@
     "pre-commit": "^1.2.2",
     "rimraf": "^5.0.1",
     "socket.io": "^4.7.2",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
   "devDependencies": {

@@ -4,6 +4,7 @@ async function executeQuery(queryText: string, params?: []) {
   try {
     const client = await pool.connect();
     const res = await client.query(queryText, params);
+    // console.log(res);
     client.release();
     return {
       data: res.rows,
