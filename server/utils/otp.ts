@@ -1,6 +1,6 @@
 export default function generateOtp(){
   const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    "ABCDEFGH0123456789JKLMNOPQRSTUVWXYZabcd0123456789efghijklmnopq0123456789rstuvwxyz";
   let otp = "";
   const length = 6;
 

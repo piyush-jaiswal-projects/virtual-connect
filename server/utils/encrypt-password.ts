@@ -5,11 +5,9 @@ dotenv.config();
 
 const secretKey = process.env.SECRET_KEY;
 
-export default function verifyPassword(
-  currPassword: string,
-  userPassword: string
-) {
-  return bcrypt.compareSync(currPassword + secretKey, userPassword);
+export function verifyPassword(currPassword: string, userPassword: string) {
+  const res = bcrypt.compareSync(currPassword + secretKey, userPassword);
+  return res;
 }
 
 export function hashPassword(password: string) {

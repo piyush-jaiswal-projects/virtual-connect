@@ -3,8 +3,12 @@ import { userCreateQuery, userDropQuery } from "./queries";
 
 executeQuery(userCreateQuery)
   .then((res) => {
-    console.log("users tabel created successfully");
+    if (res.success) console.log("$ users table created successfully");
+    throw Error("users table not created")
   })
-  .catch((res) => {
-    console.log("users tabel not created");
-  });
+  .catch((error) => {
+    console.log("X ", error.message);
+  })
+  .finally(() => {
+    process.exit(0)
+  })

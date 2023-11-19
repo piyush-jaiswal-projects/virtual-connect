@@ -7,13 +7,13 @@ import dotenv from "dotenv";
 import http from "http";
 import path from "path";
 
+dotenv.config();
+
 console.log(`>>>>> Node Environment is ${process.env.NODE_ENV}`);
 
 const app = express();
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
-
-dotenv.config();
 
 app.set("view engine", "ejs");
 

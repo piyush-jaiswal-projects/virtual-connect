@@ -1,12 +1,23 @@
-import express from 'express'
-import { check } from 'express-validator'
+import express from "express";
+import { check } from "express-validator";
+import validateRequest from "../middleware/validate-request";
 
-const otpControllers = require('../controllers/otp-controllers')
+const otpControllers = require("../controllers/otp-controllers");
 
-const router = express.Router()
+const router = express.Router();
 
-router.post('/verifyOtp', [
-    check('email').normalizeEmail().isEmail(),
-], otpControllers.VerifyOtp)
+router.post(
+  "/verifyOtp",
+  [check("email").normalizeEmail().isEmail()],
+  validateRequest,
+  otpControllers.VerifyOtp
+);
 
-module.exports = router
+router.post(
+  "/sendOtp",
+  [check("email").normalizeEmail().isEmail()],
+  validateRequest,
+  otpControllers.SendOtp
+);
+
+module.exports = router;

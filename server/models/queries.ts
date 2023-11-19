@@ -15,3 +15,5 @@ export const searchUserQuery = `SELECT * FROM users WHERE email = $1`
 export const saveUserQuery = `INSERT into users Values ($1, $2, $3, $4, $5, $6)`
 
 export const saveUserOtpQuery = `UPDATE users SET last_otp = $1 WHERE email = $2`
+
+export const updateUserVerificationQuery = `UPDATE users SET isverified = $1 WHERE email = $2`

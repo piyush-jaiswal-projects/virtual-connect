@@ -1,42 +1,60 @@
 import { Request, Response } from "express";
 import executeQuery from "../models/connection";
+import { verifyPassword, hashPassword } from "../utils/encrypt-password";
+import { validationResult } from "express-validator";
 import {
   saveUserOtpQuery,
   saveUserQuery,
   searchUserQuery,
 } from "../models/queries";
-import { generateOtp, generateUserId, verifyPassword } from "../utils";
+import {
+  generateOtp,
+  generateUserId,
+  getEmailTemplate,
+  sendMail,
+} from "../utils";
 
+// API: SIGNIN
 const signin = async (req: Request, res: Response) => {
   try {
     const { name, email, password } = req.body;
 
     // checking if user already exists
     const response = await executeQuery(searchUserQuery, [email]);
-    if (!response.success) {
-      res.status(500).json({
-        error: "Unexpected error",
-        message:
-          "The request to fetch data from database returns an unexpected error.",
-      });
-      return;
-    }
+    if (!response.success)
+      throw Error(
+        "Request to fetch data from database returns an unexpected error."
+      );
 
     // Case: user doesn't exists
     if (response.data?.length === 0) {
       const otp = generateOtp();
       const uid = generateUserId(); //unique user id
+      var hashedPassword = hashPassword(password);
       const response = await executeQuery(saveUserQuery, [
         uid,
         name,
         email,
-        password,
+        hashedPassword,
         false,
         otp,
       ]);
       if (response.success) {
         // send otp
-        console.log("User doesn't exists, sending otp");
+        const emailBody = getEmailTemplate("send otp", otp);
+        const mail = await sendMail(
+          email,
+          "Welcome to virtual connect!",
+          emailBody
+        );
+        if (mail.success) {
+          res.status(200).json({
+            success: true,
+            message: "OTP sent successfully",
+          });
+        } else {
+          throw Error("OTP not sent");
+        }
       }
       return;
     }
@@ -44,7 +62,7 @@ const signin = async (req: Request, res: Response) => {
     // Case: user already exists
     const user = response.data[0];
     if (user.isverified) {
-      const pass: boolean = verifyPassword(password, user.password);
+      const pass: boolean = await verifyPassword(password, user.password);
       if (pass) {
         res.status(200).json({
           success: true,
@@ -61,14 +79,27 @@ const signin = async (req: Request, res: Response) => {
       const response = await executeQuery(saveUserOtpQuery, [otp, user.email]);
       if (response.success) {
         // send otp
-        console.log("User exists, not verified, sending otp");
+        const emailBody = getEmailTemplate("send otp", otp);
+        const mail = await sendMail(
+          email,
+          "welcome back to Virtual Connect!",
+          emailBody
+        );
+        if (mail.success) {
+          res.status(200).json({
+            success: true,
+            message: "OTP sent successfully",
+          });
+        } else {
+          throw Error("OTP not sent");
+        }
       }
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
     res.status(500).json({
-      error: "Internal server error",
-      message: "Something went wrong",
+      message: error.message,
+      success: false,
     });
   }
 };
