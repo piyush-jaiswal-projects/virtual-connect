@@ -1,12 +1,31 @@
 import React from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function OtpForm(props: { email: string }) {
   const [otp, setOtp] = React.useState("");
 
   const submitOtp = () => {
-    // api call to verfy otp and redirect on success
-    // add access token to cookies
-    window.location.replace("/dashboard")
+    toast.loading("Verifying OTP ...", { toastId: "loading-id-verifyotp" });
+
+    axios
+      .post(`http://localhost:5001/api/otp/verifyOtp`, {
+        email: props.email,
+        otp: otp,
+      })
+      .then((response) => {
+        const { message, process, success } = response.data;
+
+        toast.dismiss();
+        toast.success(message, { toastId: "otp-signin-success" });
+        if (success && process === "otp") {
+          window.location.replace("/dashboard");
+        }
+      })
+      .catch((err) => {
+        toast.dismiss();
+        toast.error(err.response.data.message);
+      });
   };
 
   return (

@@ -1,12 +1,14 @@
 import React from "react";
 import OtpForm from "./otp-form";
 import $ from "jquery";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function SigninForm() {
   const [passType, setPassType] = React.useState("password");
   const [form, setForm] = React.useState({
-    email: "",
     name: "",
+    email: "",
     password: "",
   });
 
@@ -16,7 +18,7 @@ export default function SigninForm() {
     isError: false,
   });
 
-  const submitDetails = () => {
+  const submitDetails = async () => {
     if (form.email.length === 0 || form.password.length === 0) {
       setStatus({
         ...status,
@@ -26,10 +28,30 @@ export default function SigninForm() {
       return;
     }
 
-    $("#signin-form").addClass("hidden");
-    $("#otp-form").removeClass("hidden");
+    toast.loading("Signing up ...", { toastId: "loading-signin-form" });
 
-    // api call to register user and send otp
+    axios
+      .post(`http://localhost:5001/api/user/signin`, form)
+      .then((response) => {
+        const { message, process, success } = response.data;
+
+        toast.dismiss();
+        toast.success(message, { toastId: "signin-success" });
+
+        if (success) {
+          if (process === "otp") {
+            $("#signin-form").addClass("hidden");
+            $("#otp-form").removeClass("hidden");
+            return;
+          }
+          toast.info("Redirecting to dashboard ...", { toastId: "info-dashboard" });
+          setTimeout(() => window.location.replace("/dashboard"), 5000);
+        }
+      })
+      .catch((error) => {
+        toast.dismiss();
+        toast.error(error.response.data.message);
+      });
   };
 
   return (

@@ -50,6 +50,7 @@ const signin = async (req: Request, res: Response) => {
         if (mail.success) {
           res.status(200).json({
             success: true,
+            process: "otp",
             message: "OTP sent successfully",
           });
         } else {
@@ -66,12 +67,14 @@ const signin = async (req: Request, res: Response) => {
       if (pass) {
         res.status(200).json({
           success: true,
-          message: "user logged in successfully",
+          process: "signin",
+          message: "Signin success",
         });
       } else {
         res.status(401).json({
           success: false,
-          message: "wrong password",
+          process: "signin",
+          message: "invalid password",
         });
       }
     } else {
@@ -88,6 +91,7 @@ const signin = async (req: Request, res: Response) => {
         if (mail.success) {
           res.status(200).json({
             success: true,
+            process: "otp",
             message: "OTP sent successfully",
           });
         } else {

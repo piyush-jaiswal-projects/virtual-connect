@@ -14,6 +14,7 @@ const SendOtp = async (req: Request, res: Response) => {
     if (response.success) {
       res.status(200).json({
         success: true,
+        process: "otp",
         message: "OTP sent successfully",
       });
     } else {
@@ -23,6 +24,7 @@ const SendOtp = async (req: Request, res: Response) => {
     console.error(error);
     res.status(500).json({
       success: false,
+      process: "otp",
       message: `Something went wrong! : ${error.message}`,
     });
   }
@@ -48,11 +50,13 @@ const VerifyOtp = async (req: Request, res: Response) => {
 
       res.status(200).json({
         message: "Otp verified successfully!",
+        process: "otp",
         success: true,
       });
     } else {
       res.status(401).json({
         message: "Invalid OTP!",
+        process: "otp",
         success: false,
       });
     }

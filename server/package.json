@@ -8,7 +8,7 @@
     "build": "npx tsc",
     "start:prod": "node dist/app.js",
     "start:dev": "nodemon app.ts",
-    "create-tables": "ts-node ./models/migration.ts"
+    "configure-tables": "ts-node ./models/migration.ts"
   },
   "author": "Piyush Jaiswal",
   "license": "ISC",
