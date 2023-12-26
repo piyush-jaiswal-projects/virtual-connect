@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
-import Home from "./components/home/home";
-import Signin from "./components/signin/signin";
-import Dashboard from "./components/dashboard/dashboard";
-import CustomToastContainer from "./toast/toast";
+import Header from "./layout/header";
+import Footer from "./layout/footer";
+import Home from "./components/home";
+import Signin from "./components/signin";
+import Dashboard from "./components/dashboard";
+import CustomToastContainer from "./lib/toast";
 
 
 function App() {

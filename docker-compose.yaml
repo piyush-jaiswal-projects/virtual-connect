@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  client:
+   container_name: vc-frontend
+   init: true
+   build:
+    context: ./client
+   restart: always
+   ports: 
+    - 3000:3000
+   env_file:
+    - ./client/.env
+  
+  authservice:
+   container_name: vc-authservice
+   init: true
+   build:
+    context: ./authservice
+   restart: always
+   ports:
+    - 6969:6969
+   env_file:
+    - ./authservice/.env
