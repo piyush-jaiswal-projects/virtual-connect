@@ -1,9 +1,9 @@
-name: PULL REQUEST ON MAIN
+name: PULL REQUEST ON MASTER
 
 on:
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:

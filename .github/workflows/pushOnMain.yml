@@ -1,9 +1,9 @@
-name: PUSH ON MAIN BRANCH
+name: PUSH ON MASTER BRANCH
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
