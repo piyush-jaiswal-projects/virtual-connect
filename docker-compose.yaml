@@ -20,4 +20,4 @@ services:
    ports:
     - 6969:6969
    env_file:
-    - ./authservice/.env.docker
+    - ./authservice/.env

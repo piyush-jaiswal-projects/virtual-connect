@@ -1,7 +1,10 @@
 export type UserData = {
+  id: string;
   name: string;
   email: string;
   password: string;
-  isverified: boolean;
+  isVerified: boolean;
   last_otp: string;
+  refresh_token: "";
+  access_token: "";
 };

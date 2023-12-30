@@ -1,20 +1,15 @@
 import express from "express";
 import { check } from "express-validator";
 import validateRequest from "../middlewares/validReq.middleware";
-
-import { signin } from "../controllers/auth.controller";
+import { VerifyOtp } from "../controllers/otp.controller";
 
 const router = express.Router();
 
 router.post(
-  "/signin",
-  [
-    check("name").notEmpty(),
-    check("email").normalizeEmail().isEmail(),
-    check("password").isLength({ min: 6 }),
-  ],
+  "/verifyOtp",
+  [check("email").normalizeEmail().isEmail()],
   validateRequest,
-  signin
+  VerifyOtp
 );
 
 export default router;

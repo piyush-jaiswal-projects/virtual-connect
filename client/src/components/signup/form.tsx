@@ -16,8 +16,8 @@ export default function SigninForm() {
 
   const submitDetails = async (values: FormValues) => {
     toast.loading("Signing up ...", { toastId: "loading-signin-form" });
-    axios
-      .post(`http://localhost:5001/api/user/signin`, values)
+    await axios
+      .post(`http://localhost:6969/api/user/signup`, values)
       .then((response) => {
         const { message, process, success } = response.data;
 

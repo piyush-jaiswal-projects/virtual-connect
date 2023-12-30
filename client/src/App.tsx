@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./layout/header";
 import Footer from "./layout/footer";
 import Home from "./components/home";
-import Signin from "./components/signin";
+import Signin from "./components/signup";
 import Dashboard from "./components/dashboard";
 import CustomToastContainer from "./lib/toast";
 

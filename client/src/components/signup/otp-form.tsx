@@ -9,7 +9,7 @@ export default function OtpForm(props: { email: string }) {
     toast.loading("Verifying OTP ...", { toastId: "loading-id-verifyotp" });
 
     axios
-      .post(`http://localhost:5001/api/otp/verifyOtp`, {
+      .post(`http://localhost:6969/api/otp/verifyOtp`, {
         email: props.email,
         otp: otp,
       })
