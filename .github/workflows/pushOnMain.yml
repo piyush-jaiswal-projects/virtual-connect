@@ -15,10 +15,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: Installing dependencies
-        run: npm install
+      - name: Running Tests on Client service
+        run: cd client && npm install && npm run test
+      - name: Running Tests on Auth service
+        run: cd authservice && npm install && npm run test
       - name: Build Docker
         run: docker-compose build
-      - name: Run Tests
-        run: npm run test
         # production deployment thing
