@@ -12,7 +12,7 @@ const VerifyOtp = (props: any) => {
       toast.loading("Verifying OTP ...", { toastId: "loading-id-verifyotp" });
 
       const { data } = await axios.post(
-        `http://localhost:6969/api/otp/verifyOtp`,
+        `${process.env.REACT_APP_API_URL}/api/otp/verifyOtp`,
         {
           email: email,
           otp: otp,

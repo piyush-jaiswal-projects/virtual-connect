@@ -17,7 +17,7 @@ export default function SigninForm() {
     try {
       toast.loading("Signing up ...", { toastId: "loading-signin-form" });
       const { data } = await axios.post(
-        `http://localhost:6969/api/user/signup`,
+        `${process.env.REACT_APP_API_URL}/api/user/signup`,
         values
       );
       toast.dismiss();

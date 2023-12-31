@@ -16,7 +16,7 @@ const Login = (props: any) => {
       toast.loading("Logging in ...", { toastId: "loading-login" });
 
       const { data } = await axios.post(
-        `http://localhost:6969/api/user/login`,
+        `${process.env.REACT_APP_API_URL}/api/user/login`,
         credentials
       );
       if (data.success) {
