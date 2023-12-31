@@ -6,11 +6,12 @@ export default new EntitySchema({
   columns: {
     id: {
       type: "text",
+      unique: true,
       primary: true,
     },
     name: {
       type: "text",
-      unique: true,
+      unique: false,
       nullable: false,
     },
     email: {
@@ -29,7 +30,7 @@ export default new EntitySchema({
     last_otp: {
       type: "text",
       nullable: true,
-    }
+    },
   },
 });
 

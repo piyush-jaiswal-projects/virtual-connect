@@ -13,7 +13,7 @@ export function verifyPassword(
     const res = bcrypt.compareSync(currPassword + secretKey, userPassword);
     return res;
   }
-  return false
+  return false;
 }
 
 export function hashPassword(password: string) {

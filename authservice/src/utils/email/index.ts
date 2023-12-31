@@ -32,10 +32,9 @@ export default async function sendMail(
         user: process.env.SENDER_GMAIL_ADDRESS,
         refreshToken: process.env.SENDER_GMAIL_REFRESH_TOKEN,
         accessToken: process.env.SENDER_GMAIL_ACCESS_TOKEN,
-        expires: 1484314697598
-      }
+        expires: 1484314697598,
+      },
     };
-    
 
     const info = await transporter.sendMail(mailOptions);
     console.log("Message sent: %s", info.messageId);

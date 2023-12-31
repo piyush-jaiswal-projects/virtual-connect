@@ -1,36 +1,9 @@
 import React from "react";
 import {
-  Hero,
-  VideoCall,
-  AudioCall,
-  FileSharing,
-  Chatting,
+  Hero
 } from "../../assets/images";
+import { featuresData } from "../../constants";
 import FeaturesCard from "./features-card";
-
-interface Feature {
-  text: string;
-  imageUrl: string;
-}
-
-const featuresData: Feature[] = [
-  {
-    text: "Video Conferencing",
-    imageUrl: VideoCall,
-  },
-  {
-    text: "Audio Calling",
-    imageUrl: AudioCall,
-  },
-  {
-    text: "File Sharing",
-    imageUrl: FileSharing,
-  },
-  {
-    text: "Chatting",
-    imageUrl: Chatting,
-  },
-];
 
 export default function Home() {
   return (
@@ -67,7 +40,7 @@ export default function Home() {
       </div>
 
       <div className="w-[100vw] p-2">
-        <h1 className=" font-bold text-[25px] mx-auto">Our Features</h1>
+        <h1 className=" font-bold text-center text-[25px] mx-auto">Features we are building</h1>
         <div className="flex justify-around items-center flex-wrap p-2">
           {featuresData.map((item, index) => {
             return (

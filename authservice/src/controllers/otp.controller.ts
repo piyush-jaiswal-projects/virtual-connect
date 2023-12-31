@@ -15,7 +15,6 @@ const VerifyOtp = async (req: Request, res: Response) => {
 
     if (!user) throw new ApiError(401, "User does not exists!");
 
-
     if (user.last_otp === otp) {
       const isUpdated = await myDataSource.getRepository(userEntity).save({
         ...user,

@@ -55,7 +55,7 @@ const signup = async (req: Request, res: Response) => {
       .status(200)
       .json(new ApiResponse(200, userData, "OTP sent successfully!"));
   } catch (error: any) {
-    res.status(error.statusCode | 500).json({
+    res.status(error.statusCode).json({
       success: false,
       message: error.message,
     });
@@ -82,14 +82,23 @@ const login = async (req: Request, res: Response) => {
 
     res
       .status(200)
-      .cookie("jwt", refreshToken, {
+      .cookie("jwt-refresh", refreshToken, {
         httpOnly: true,
         sameSite: false,
         secure: true,
         maxAge: 24 * 60 * 60 * 1000,
       })
       .json(
-        new ApiResponse(200, { accessToken }, "User logged in successfully!")
+        new ApiResponse(
+          200,
+          {
+            accessToken,
+            name: user.name,
+            email: user.email,
+            isVerified: user.isVerified,
+          },
+          "User logged in successfully!"
+        )
       );
   } catch (error: any) {
     res.status(error.statusCode | 500).json({

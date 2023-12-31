@@ -17,13 +17,14 @@ router.post(
   signup
 );
 
-router.post("/login",
-[
-  check("email").normalizeEmail().isEmail(),
-  check("password").isLength({ min: 6 }),
+router.post(
+  "/login",
+  [
+    check("email").normalizeEmail().isEmail(),
+    check("password").isLength({ min: 6 }),
   ],
   validateRequest,
   login
-)
+);
 
 export default router;

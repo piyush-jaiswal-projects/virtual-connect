@@ -22,7 +22,7 @@ export default function generateToken(
 
     const token = jwt.sign(data, secret || "", {
       expiresIn: expiryTime,
-      algorithm: "RS256",
+      // algorithm: "RS256",
     });
 
     return token;
