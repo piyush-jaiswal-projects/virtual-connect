@@ -8,7 +8,7 @@ import FeaturesCard from "./features-card";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-wrap justify-between items-center w-[90vw] min-h-[88vh] mx-auto">
+      <div className="flex flex-wrap justify-between items-center w-[90vw] min-h-[85vh] mx-auto">
         <div className="w-[100%] lg:w-[60%] flex justify-start flex-col lg:translate-y-[-150px] my-[50px] lg:my-0">
           <h1 className="text-center lg:text-left text-[2rem] lg:text-[4rem] leading-[0.9] font-semibold">
             Connect virtually with your friends and colleagues.
@@ -39,7 +39,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[100vw] p-2">
+      {/* <div className="w-[100vw] p-2">
         <h1 className=" font-bold text-center text-[25px] mx-auto">Features we are building</h1>
         <div className="flex justify-around items-center flex-wrap p-2">
           {featuresData.map((item, index) => {
@@ -52,7 +52,7 @@ export default function Home() {
             );
           })}
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

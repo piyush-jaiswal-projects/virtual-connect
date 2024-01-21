@@ -12,12 +12,12 @@ services:
     - ./client/.env.sample
   
   authservice:
-   container_name: vc-authservice
+   container_name: vc-backend
    init: true
    build:
-    context: ./authservice
+    context: ./backend
    restart: always
    ports:
     - 6969:6969
    env_file:
-    - ./authservice/.env.sample
+    - ./backend/.env.sample

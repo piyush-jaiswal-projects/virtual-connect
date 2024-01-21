@@ -3,9 +3,9 @@
     "concurrently": "^8.2.2"
   },
   "scripts": {
-    "start:dev": "concurrently \"cd client && npm run dev\" \"cd authservice && npm run dev\"",
-    "lint": "concurrently \"cd client && npm run lint\" \"cd authservice && npm run lint\"",
+    "start:dev": "concurrently \"cd client && npm run start\" \"cd backend && npm run dev\"",
+    "lint": "concurrently \"cd client && npm run lint\" \"cd backend && npm run lint\"",
     "test": "npm run test",
-    "build": "concurrently \"cd client && npm run build\" \"cd authservice && npm run build\""
+    "build": "concurrently \"cd client && npm run build\" \"cd backend && npm run build\""
   }
 }
