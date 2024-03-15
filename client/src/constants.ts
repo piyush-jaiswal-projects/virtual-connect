@@ -30,18 +30,21 @@ export const featuresData: Feature[] = [
 export const DummyOnlineData: ActiveUserProps[] = [
   {
     name: "Piyush Jaiswal",
-    uid: "1",
-    imgUrl: ""
+    id: "1",
+    imgUrl: "",
+    socketId: ""
   },
   {
     name: "Shalabh Sharma",
-    uid: "2",
-    imgUrl: ""
+    id: "2",
+    imgUrl: "",
+    socketId: ""
   },
   {
     name: "Prayas Pahwa",
-    uid: "3",
-    imgUrl: ""
+    id: "3",
+    imgUrl: "",
+    socketId: ""
   },
 ]
   

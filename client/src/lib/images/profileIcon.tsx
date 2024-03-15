@@ -1,14 +1,9 @@
 import { UserIcon } from "../../assets/icons";
 
-type UserIconProps = {
-    uid: string
-    imgUrl: string
-}
-
-export default function ProfileIcon({uid, imgUrl}: UserIconProps) {
+export default function ProfileIcon(props: {uid: string}) {
   return (
     <div className="bg-gray-200 w-[45px] h-[45px] rounded-full overflow-hidden flex justify-center items-center p-1">
-      <img src={imgUrl.length === 0 ? UserIcon : imgUrl} alt={uid} />
+      <img src={UserIcon} alt={props.uid} />
     </div>
   );
 }

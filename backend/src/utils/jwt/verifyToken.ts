@@ -14,7 +14,7 @@ export default function verifyToken(type: string, token: string) {
 
     jwt.verify(token, secret || "", (err: any) => {
       if (err) return false;
-      else true;
+      else return true;
     });
   } catch (error) {
     throw new Error();

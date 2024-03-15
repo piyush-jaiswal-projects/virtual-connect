@@ -2,8 +2,6 @@ import React from "react";
 import {
   Hero
 } from "../../assets/images";
-import { featuresData } from "../../constants";
-import FeaturesCard from "./features-card";
 
 export default function Home() {
   return (

@@ -11,5 +11,19 @@ function getCookie(name: string) {
   
     return null; // Return null if the cookie with the specified name is not found
 }
+
+export function getAllCookies() {
+  
+  const cookiesObject = {
+    name: getCookie("name"),
+    email: getCookie("email"),
+    uid: getCookie("uid"),
+    accesToken: getCookie("accessToken"),
+    isVerified: getCookie("isVerified"),
+    isLoggedIn: getCookie("isLoggedIn")
+  };
+
+  return cookiesObject;
+}
   
 export default getCookie

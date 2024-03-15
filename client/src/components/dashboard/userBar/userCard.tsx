@@ -1,29 +1,26 @@
 import ProfileIcon from "../../../lib/images/profileIcon";
+import { ActiveUserProps, User } from "../../../types/User.types";
 
 type UserCardProps = {
-  uid: string;
-  name: string;
-  imgUrl: string;
-  setActive: (name: string, uid: string, imgUrl: string) => void;
+  user: User
+  setActive: (args: User) => void;
 };
 
 export default function UserCard({
-  uid,
-  name,
-  imgUrl,
+  user,
   setActive,
 }: UserCardProps) {
   return (
     <div
       onClick={() => {
-        setActive(name, uid, imgUrl);
+        setActive(user);
       }}
       className="flex justify-start items-center border-b p-2 cursor-pointer hover:bg-gray-100"
     >
-      <ProfileIcon uid={uid} imgUrl={imgUrl} />
+      <ProfileIcon uid={user.uid} />
 
       <div className="mx-4 text-lg">
-        <h2>{name}</h2>
+        <h2>{user.name}</h2>
       </div>
     </div>
   );

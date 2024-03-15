@@ -1,5 +1,5 @@
 import request from 'supertest'
-import { app } from '../src/app'
+import { server as app } from '../src/app'
 
 describe('Testing Login APIs', () => {
     it('return success and 200 when login successful', async () => {

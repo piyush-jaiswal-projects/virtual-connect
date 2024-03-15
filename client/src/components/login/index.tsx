@@ -16,7 +16,7 @@ const Login = (props: any) => {
       toast.loading("Logging in ...", { toastId: "loading-login" });
 
       const { data } = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/user/login`,
+        `${process.env.REACT_APP_API_URL}/api/auth/login`,
         credentials
       );
       if (data.success) {
@@ -25,6 +25,7 @@ const Login = (props: any) => {
         setCookies([
           { name: "name", value: data.data.name },
           { name: "email", value: data.data.email },
+          { name: "uid", value: data.data.uid },
           { name: "isVerified", value: data.data.isVerified },
           { name: "accessToken", value: data.data.accessToken },
           { name: "isUserLoggedIn", value: true },

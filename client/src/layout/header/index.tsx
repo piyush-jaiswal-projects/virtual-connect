@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <div
-      className="custom-shadow overflow-hidden p-2 px-4 h-[60px] w-[100vw] flex 
+      className="custom-shado border-b overflow-hidden p-2 px-4 h-[60px] w-[100vw] flex 
     justify-between items-center"
     >
       <div>

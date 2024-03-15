@@ -1,12 +1,10 @@
 import { useState } from "react";
 
-export default function ChatBar() {
-  const [message, setMessage] = useState<string>("");
+export default function ChatBar(props: {
+  sendMessage: (msg: string) => void;
+}) {
 
-  const sendMessage = () => {
-    alert(`Sent a message! : ${message}`);
-    setMessage("");
-  };
+  const [message, setMessage] = useState<string>("")
 
   return (
     <div className="h-[50px] flex justify-center items-center w-[100%]">
@@ -20,14 +18,18 @@ export default function ChatBar() {
           onChange={(e) => setMessage(e.target.value)}
           onKeyUp={(event) => {
             if (event.key === "Enter") {
-              sendMessage();
+              props.sendMessage(message);
+              setMessage("")
             }
           }}
         />
         <button
           id="msgBtn"
           className="bg-black w-[10%] text-white h-[50px] rounded-r-3xl px-2"
-          onClick={sendMessage}
+          onClick={() => {
+            props.sendMessage(message)
+            setMessage("")
+          }}
         >
           Send
         </button>

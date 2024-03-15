@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 
 const VerifyOtp = (props: any) => {
+  
   const [otp, setOtp] = React.useState("");
   const { email } = useParams();
 

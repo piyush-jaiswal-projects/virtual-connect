@@ -8,8 +8,8 @@ const LogoutUser = () => {
     { name: "accessToken", value: null },
     { name: "isUserLoggedIn", value: false },
   ]);
-    
-    window.location.reload()
+
+  window.location.reload();
 };
 
 export default LogoutUser;

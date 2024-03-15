@@ -3,8 +3,12 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import AuthRouter from "./routes/auth.routes";
 import OtpRouter from "./routes/otp.routes";
+import UserRouter from "./routes/user.routes";
+import { createServer } from "http";
+
 
 const app = express();
+const server = createServer(app)
 
 const corsOptions = {
   origin: "*", // Allow all origins
@@ -20,11 +24,12 @@ app.use(cookieParser());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-app.use("/api/user", AuthRouter);
+app.use("/api/auth", AuthRouter);
 app.use("/api/otp", OtpRouter);
+app.use("/api/user", UserRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Welcome to Virtual Connect Server!!");
 });
 
-export { app };
+export { server };

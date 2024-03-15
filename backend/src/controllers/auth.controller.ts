@@ -95,6 +95,7 @@ const login = async (req: Request, res: Response) => {
             accessToken,
             name: user.name,
             email: user.email,
+            uid: user.id,
             isVerified: user.isVerified,
           },
           "User logged in successfully!"

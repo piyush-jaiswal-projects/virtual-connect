@@ -31,6 +31,18 @@ export default new EntitySchema({
       type: "text",
       nullable: true,
     },
+    socketId: {
+      type: "text",
+      nullable: true,
+    },
+    onlineStatus: {
+      type: "boolean",
+      default: "false"
+    },
+    imgUrl: {
+      type: "text",
+      nullable: true
+    }
   },
 });
 

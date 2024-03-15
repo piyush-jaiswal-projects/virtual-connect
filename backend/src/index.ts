@@ -1,6 +1,8 @@
-import { app } from "./app";
+import { server } from "./app";
 import dotenv from "dotenv";
 import connectDB from "./db";
+import { createServer } from "http";
+import { io } from "./socket";
 
 dotenv.config({
   path: "../.env",
@@ -8,9 +10,12 @@ dotenv.config({
 
 connectDB()
   .then(() => {
-    app.listen(process.env.PORT || 6969, () => {
+    server.listen(process.env.PORT || 6969, () => {
       console.log(`⚙️  Server is running at port : ${process.env.PORT}`);
     });
+  })
+  .then(() => {
+    io.listen(5001)
   })
   .catch((err) => {
     console.log("POSTGRES db connection failed !!! ", err);
