@@ -29,6 +29,8 @@ app.use("/api/otp", OtpRouter);
 app.use("/api/user", UserRouter);
 
 app.get("/", (req: Request, res: Response) => {
+  console.log("pinged");
+  
   res.send("Welcome to Virtual Connect Server!!");
 });
 

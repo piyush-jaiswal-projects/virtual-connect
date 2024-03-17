@@ -10,8 +10,12 @@ import VerifyOtp from "./components/otp/verifyOtp";
 import Otp from "./components/otp";
 import Login from "./components/login";
 
+const uri = process.env.REACT_APP_API_URL;
 
 function App() {
+  fetch(`${uri}/`, {
+    method: "GET",
+  });
 
   return (
     <div className="App">
