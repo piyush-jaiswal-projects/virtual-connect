@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <div
-      className="custom-shado border-b overflow-hidden p-2 px-4 h-[60px] w-[100vw] flex 
+      className="custom-shado border-b overflow-hidden p-2 px-4 md:h-[60px] w-[100vw] md:flex 
     justify-between items-center"
     >
       <div>
@@ -17,25 +17,29 @@ export default function Header() {
         </a>
       </div>
 
-      <div>
-      <a
-        className="text-[1.2rem] mx-2 hover:text-gray-500 border p-2 rounded-lg bg-gray-100"
-        href={
-          (isUserLoggdIn === "true" && userName !== null) ? "/dashboard" : "/login"
-        }
-        rel="nonreferrer"
-      >
-        {(isUserLoggdIn === "true" && userName !== null) ? userName : "Login"}
-      </a>
+      <div className="flex justify-between border-t-2 md:border-t-0">
+        <a
+          className="text-[1.2rem] mx-2 hover:text-gray-500 md:border text-center md:p-2 md:rounded-lg md:bg-gray-100"
+          href={
+            isUserLoggdIn === "true" && userName !== null
+              ? "/dashboard"
+              : "/login"
+          }
+          rel="nonreferrer"
+        >
+          {isUserLoggdIn === "true" && userName !== null ? userName : "Login"}
+        </a>
 
-      {(isUserLoggdIn === "true") && <button
-          className="text-[1.2rem] mx-2 hover:text-gray-500"
-          onClick={() => {
-            logoutUser()
-          }}
-      >
-        Log Out
-      </button>}
+        {isUserLoggdIn === "true" && (
+          <button
+            className="text-[1.2rem] mx-2 hover:text-gray-500 "
+            onClick={() => {
+              logoutUser();
+            }}
+          >
+            Log Out
+          </button>
+        )}
       </div>
     </div>
   );

@@ -8,6 +8,6 @@ export interface Message {
 
 interface User {
     name: string;
-    id: string;
+    uid: string;
     sid: string
 }

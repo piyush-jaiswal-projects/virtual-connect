@@ -7,11 +7,11 @@ export default function ChatBar(props: {
   const [message, setMessage] = useState<string>("")
 
   return (
-    <div className="h-[50px] flex justify-center items-center w-[100%]">
-      <div className="rounded-3xl w-[80%] h-[50px]">
+    <div className="h-[50px] flex justify-center items-center w-[100%] my-2">
+      <div className="rounded-3xl w-[90%] h-[50px]">
         <input
           id="msgInput"
-          className="w-[90%] border rounded-l-3xl h-[50px] px-2 outline-none"
+          className="w-[80%] border rounded-l-3xl h-[50px] px-2 outline-none"
           type="text"
           placeholder="enter your message ..."
           value={message}
@@ -19,16 +19,16 @@ export default function ChatBar(props: {
           onKeyUp={(event) => {
             if (event.key === "Enter") {
               props.sendMessage(message);
-              setMessage("")
+              setMessage("");
             }
           }}
         />
         <button
           id="msgBtn"
-          className="bg-black w-[10%] text-white h-[50px] rounded-r-3xl px-2"
+          className="bg-black w-[20%] md:w-[15%] lg:w-[10%] text-white h-[50px] rounded-r-3xl px-2"
           onClick={() => {
-            props.sendMessage(message)
-            setMessage("")
+            props.sendMessage(message);
+            setMessage("");
           }}
         >
           Send

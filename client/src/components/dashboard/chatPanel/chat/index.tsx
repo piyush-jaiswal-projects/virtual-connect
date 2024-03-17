@@ -11,7 +11,7 @@ export default function Chat(props: {
 
   return (
     <div className="flex flex-col justify-between h-[90%]">
-      <ChatSection messageList={props.messageList} />
+      <ChatSection messageList={props.messageList} activeReceipient={props.activeRecipient} />
       <ChatBar
         sendMessage={props.sendMessage}
       />
