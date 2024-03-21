@@ -18,10 +18,12 @@ const signup = async (req: Request, res: Response) => {
     const { name, email, password } = req.body;
 
     const isUser = await myDataSource.getRepository(userEntity).find({
-      where: {
-        name: name,
-        email: email,
-      },
+      where: [
+        {
+          name: name,
+        },
+        { email: email },
+      ],
     });
 
     if (isUser[0]) throw new ApiError(401, "User already exists!");
@@ -55,10 +57,12 @@ const signup = async (req: Request, res: Response) => {
       .status(200)
       .json(new ApiResponse(200, userData, "OTP sent successfully!"));
   } catch (error: any) {
-    res.status(error.statusCode).json({
+    res.status(error.statusCode || 500).json({
       success: false,
       message: error.message,
     });
+    console.log(error);
+    
   }
 };
 

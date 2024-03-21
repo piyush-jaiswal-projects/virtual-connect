@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { DB_NAME } from "../constants";
 import userEntity from "../models/user.entity";
 import socketEntity from "../models/socket.entity";
+import messagesEntity from "../models/messages.entity";
 
 dotenv.config({
   path: "../.env",
@@ -15,7 +16,7 @@ export const myDataSource = new DataSource({
   database: DB_NAME,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  entities: [userEntity, socketEntity],
+  entities: [userEntity, socketEntity, messagesEntity],
   synchronize: true,
   ssl: {
     rejectUnauthorized: false,

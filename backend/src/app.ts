@@ -4,11 +4,11 @@ import cors from "cors";
 import AuthRouter from "./routes/auth.routes";
 import OtpRouter from "./routes/otp.routes";
 import UserRouter from "./routes/user.routes";
+import ChatRouter from "./routes/chat.routes";
 import { createServer } from "http";
 
-
 const app = express();
-const server = createServer(app)
+const server = createServer(app);
 
 const corsOptions = {
   origin: "*", // Allow all origins
@@ -27,10 +27,11 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use("/api/auth", AuthRouter);
 app.use("/api/otp", OtpRouter);
 app.use("/api/user", UserRouter);
+app.use("/api/chat", ChatRouter);
 
 app.get("/", (req: Request, res: Response) => {
   console.log("pinged");
-  
+
   res.send("Welcome to Virtual Connect Server!!");
 });
 

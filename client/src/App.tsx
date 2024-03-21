@@ -19,11 +19,19 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <CustomToastContainer />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <Home />
+                <Footer />
+              </>
+            }
+          />
           <Route path="/signin" element={<Signin />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -31,7 +39,6 @@ function App() {
           <Route path="/verifyOtp/:email" element={<VerifyOtp />} />
         </Routes>
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }

@@ -8,7 +8,7 @@ const createMessage = (msg: string, activeChat: User | null, currSid: string): M
         msg_id: new Date() + String(getCookie("uid")) + activeChat?.uid,
         sender: {
           name: String(getCookie("name")),
-          uid: String(getCookie("id")),
+          uid: String(getCookie("uid")),
           sid: currSid
         },
         receipient: {

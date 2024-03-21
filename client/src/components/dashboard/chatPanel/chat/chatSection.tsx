@@ -31,10 +31,10 @@ export default function ChatSection(props: {
   return (
     <div
       id="chat-container"
-      className="h-[90%] w-[100%] mx-auto bg-gray-100 overflow-x-hidden overflow-y-scroll no-scrollbar px-2"
+      className="h-[85%] md:h-[90%] w-[100%] mx-auto bg-gray-100 overflow-x-hidden overflow-y-scroll no-scrollbar px-2"
     >
       {props.messageList.map((message) => {
-        if (props.activeReceipient?.sid === message.sender.sid)
+        if (props.activeReceipient?.uid === message.sender.uid)
           return <ReceivedMsgCard msg={message.content} />;
         else return <SentMsgCard msg={message.content} />;
       })}

@@ -3,6 +3,7 @@ import { server } from "./app";
 import dotenv from "dotenv";
 import { Message } from "./types/message.types";
 import deleteUserFromSocketList from "./utils/lib/deleteUserFromSocketList";
+import { saveMessageToDb } from "./utils";
 
 dotenv.config();
 
@@ -39,7 +40,7 @@ io.on("connection", (socket) => {
     io.emit("user-joined", connectedUsers);
   });
 
-  socket.on("send-message", (msg: Message) => {
+  socket.on("send-message", async (msg: Message) => {
     if (msg.receipient.sid.length === 0) {
       socket.emit("error", "message not sent")
       console.log("Socket Id not found");
@@ -52,8 +53,9 @@ io.on("connection", (socket) => {
       return;
     }
 
-    socket.emit("message-sent", msg)
+    socket.emit("message-sent", msg);
     socket.to(msg.receipient.sid).emit("receive-message", msg);
+    await saveMessageToDb(msg);
   });
 
   socket.on("disconnect-user", () => {

@@ -8,12 +8,13 @@ import { User } from "../../types/User.types";
 import createMessage from "../../utils/createMessage";
 import { Socket, io } from "socket.io-client";
 import useWindowWidth from "../../utils/hooks/useWindowWidth";
+import axios from "axios";
 
 const URL = process.env.REACT_APP_API_URL || "";
 
 export default function Dashboard() {
   const socket = useRef<Socket>();
-  const windowWidth = useWindowWidth()
+  const windowWidth = useWindowWidth();
 
   const [isInitial, setInitial] = useState<boolean>(true);
   const [currSid, setCurrSid] = useState<string>("");
@@ -90,7 +91,8 @@ export default function Dashboard() {
         setActiveChat={(args: User) => {
           setActiveChat(args);
           setInitial(false);
-          if(windowWidth <= 500) document.getElementById("user-list")?.classList.toggle("hidden")
+          if (windowWidth <= 500)
+            document.getElementById("user-list")?.classList.toggle("hidden");
         }}
       />
       <CommunicationPanel
