@@ -1,7 +1,4 @@
-import React from "react";
-import {
-  Hero
-} from "../../assets/images";
+import { Hero } from "../assets/images";
 
 export default function Home() {
   return (
@@ -31,26 +28,17 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-[100%] lg:w-[25%] flex justify-center lg:justify-start flex-col 
-        lg:translate-x-[-100px] lg:translate-y-[80px]">
-        <img className="w-[300px] h-[300px] mx-auto" src={Hero} alt="Virtual Connect" />
+        <div
+          className="w-[100%] lg:w-[25%] flex justify-center lg:justify-start flex-col 
+        lg:translate-x-[-100px] lg:translate-y-[80px]"
+        >
+          <img
+            className="w-[300px] h-[300px] mx-auto"
+            src={Hero}
+            alt="Virtual Connect"
+          />
         </div>
       </div>
-
-      {/* <div className="w-[100vw] p-2">
-        <h1 className=" font-bold text-center text-[25px] mx-auto">Features we are building</h1>
-        <div className="flex justify-around items-center flex-wrap p-2">
-          {featuresData.map((item, index) => {
-            return (
-              <FeaturesCard
-                key={"card" + index}
-                text={item.text}
-                imageUrl={item.imageUrl}
-              />
-            );
-          })}
-        </div>
-      </div> */}
     </>
   );
 }

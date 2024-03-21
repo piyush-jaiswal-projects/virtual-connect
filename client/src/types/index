@@ -7,3 +7,5 @@ export {
   type OnlineUserProps,
   User as UserType,
 } from "./User.types";
+export { type SignupValuesType } from './Signup.types'
+

@@ -1,9 +1,9 @@
-import ChatBar from "./chatBar";
-import ChatSection from "./chatSection";
-import { Message } from "../../../../types/Message.types";
-import { User } from "../../../../types/User.types";
+import ChatBar from "./ChatBar";
+import ChatSection from "./MessageWindow";
+import { Message } from "../types/Message.types";
+import { User } from "../types/User.types";
 
-export default function Chat(props: {
+export default function ChatWindow(props: {
   activeRecipient: User | null
   messageList: Message[]
   sendMessage: (msg: string) => void

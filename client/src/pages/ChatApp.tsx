@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Socket, io } from "socket.io-client";
 
-import {getCookie, getAllCookies, createMessage} from "../../utils"
-import { useWindowWidth } from "../../utils/hooks";
-import { Message as MessageType } from '../../types/Message.types'
-import { User as UserType } from '../../types/User.types'
-import UsersList from "./userBar";
-import CommunicationPanel from "./chatPanel";
+import { getCookie, getAllCookies, createMessage } from "../utils";
+import { useWindowWidth } from "../utils/hooks";
+import { Message as MessageType } from "../types/Message.types";
+import { User as UserType } from "../types/User.types";
+import { ChatPanel, OnlineUserList } from "../components";
 
 const URL = process.env.REACT_APP_API_URL || "";
 
-export default function Dashboard() {
+export default function ChatApp() {
   const socket = useRef<Socket>();
   const windowWidth = useWindowWidth();
 
@@ -57,7 +56,9 @@ export default function Dashboard() {
     }
 
     socket.current?.on("connect", notifyUserConnected);
-    socket.current?.on("user-joined", (list: UserType[]) => updateUserList(list));
+    socket.current?.on("user-joined", (list: UserType[]) =>
+      updateUserList(list)
+    );
     socket.current?.on("user-left", (list: UserType[]) => updateUserList(list));
     socket.current?.on("receive-message", (msg: MessageType) =>
       updateMessageList(msg)
@@ -86,7 +87,7 @@ export default function Dashboard() {
 
   return (
     <div className="md:flex justify-center items-start w-[100%] h-[85vh] overflow-hidden">
-      <UsersList
+      <OnlineUserList
         users={onlineUsers.filter((user) => user.sid !== currSid)}
         setActiveChat={(args: UserType) => {
           setActiveChat(args);
@@ -95,7 +96,7 @@ export default function Dashboard() {
             document.getElementById("user-list")?.classList.toggle("hidden");
         }}
       />
-      <CommunicationPanel
+      <ChatPanel
         messageList={messageList}
         sendMessageHandler={sendMessageHandler}
         chatData={activeChat}

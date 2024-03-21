@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import $ from "jquery";
 import { toast } from "react-toastify";
-import setCookies from "../../utils/setCookies";
+import setCookies from "../utils/setCookies";
 
 const Login = (props: any) => {
   const [credentials, setCredentials] = useState({

@@ -1,14 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Header from "./layout/header";
-import Footer from "./layout/footer";
-import Home from "./components/home";
-import Signin from "./components/signup";
-import Dashboard from "./components/dashboard";
-import CustomToastContainer from "./lib/toast";
-import VerifyOtp from "./components/otp/verifyOtp";
-import Otp from "./components/otp";
-import Login from "./components/login";
+import CustomToastContainer from "./ui/toast";
+import Otp from "./components/Otp";
+import { ChatApp, Home, Login, Signup } from "./pages";
+import { VerifyOtpForm } from "./components";
 
 const uri = process.env.REACT_APP_API_URL;
 
@@ -22,21 +16,12 @@ function App() {
       <CustomToastContainer />
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Header />
-                <Home />
-                <Footer />
-              </>
-            }
-          />
-          <Route path="/signin" element={<Signin />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<ChatApp />} />
           <Route path="/verifyOtp" element={<Otp />} />
-          <Route path="/verifyOtp/:email" element={<VerifyOtp />} />
+          <Route path="/verifyOtp/:email" element={<VerifyOtpForm />} />
         </Routes>
       </BrowserRouter>
     </div>

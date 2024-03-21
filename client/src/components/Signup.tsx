@@ -3,17 +3,12 @@ import axios from "axios";
 import $ from "jquery";
 import { toast } from "react-toastify";
 import { Formik } from "formik";
+import { SignupValuesType } from "../types/Signup.types";
 
-type FormValues = {
-  name: string;
-  email: string;
-  password: string;
-};
-
-export default function SigninForm() {
+export default function Signin() {
   const [passType, setPassType] = React.useState("password");
 
-  const signUp = async (values: FormValues) => {
+  const signUp = async (values: SignupValuesType) => {
     try {
       toast.loading("Signing up ...", { toastId: "loading-signin-form" });
       const { data } = await axios.post(
@@ -31,12 +26,12 @@ export default function SigninForm() {
   };
 
   return (
-    <>
+    <div className="flex justify-center items-center h-[86vh]">
       <div id="signin-form" className="">
         <Formik
           initialValues={{ name: "", email: "", password: "" }}
           validate={(values) => {
-            var errors: FormValues = {
+            var errors: SignupValuesType = {
               name: "",
               email: "",
               password: "",
@@ -156,13 +151,18 @@ export default function SigninForm() {
                     Submit
                   </button>
 
-                  <a href="/login">Already have an account? <label className="underline cursor-pointer">Login here</label></a>
+                  <a href="/login">
+                    Already have an account?{" "}
+                    <label className="underline cursor-pointer">
+                      Login here
+                    </label>
+                  </a>
                 </form>
               </div>
             </>
           )}
         </Formik>
       </div>
-    </>
+    </div>
   );
 }

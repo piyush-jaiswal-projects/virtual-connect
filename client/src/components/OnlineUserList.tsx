@@ -1,7 +1,7 @@
-import { User } from "../../../types/User.types";
-import UserCard from "./userCard";
+import { User } from "../types/User.types";
+import UserCard from "./OnlineUserCard";
 
-export default function OnlineList(props: {
+export default function OnlineUserList(props: {
   setActiveChat: (args: User) => void;
   users: User[] | undefined;
 }) {

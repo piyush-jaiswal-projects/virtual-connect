@@ -1,23 +1,23 @@
-import ReceivedMsgCard from "./receivedMsgCard";
-import SentMsgCard from "./sentMsgCard";
-import { Message } from "../../../../types/Message.types";
-import { User } from "../../../../types/User.types";
-import { useEffect } from "react";
+import ReceivedMsgCard from "./ReceivedMsgCard";
+import SentMsgCard from "./SentMsgCard";
+import { Message } from "../types/Message.types";
+import { User } from "../types/User.types";
+import { useCallback, useEffect } from "react";
 
-export default function ChatSection(props: {
+export default function MessageWindow(props: {
   messageList: Message[];
   activeReceipient: User | null;
 }) {
   const chatContainer = document.getElementById("chat-container");
 
-  const autoScrollContainer = () => {
+  const autoScrollContainer = useCallback(() => {
     if (chatContainer === null) return;
     chatContainer.scrollTop = chatContainer.scrollHeight;
-  };
+  }, [chatContainer]);
 
   useEffect(() => {
     autoScrollContainer();
-  }, [props.messageList.length]);
+  }, [props.messageList.length, autoScrollContainer]);
 
   chatContainer?.addEventListener("scroll", () => {
     const isScrolledToBottom: boolean =

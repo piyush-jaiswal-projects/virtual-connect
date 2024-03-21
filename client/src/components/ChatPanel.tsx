@@ -1,10 +1,10 @@
-import { Message } from "../../../types/Message.types";
-import { ActiveUserProps, User } from "../../../types/User.types";
-import Chat from "./chat";
-import Header from "./header";
-import InitialUI from "./initialUi";
+import { Message } from "../types/Message.types";
+import { User } from "../types/User.types";
+import Chat from "./ChatWindow";
+import Header from "./ChatTopbar";
+import InitialUI from "./initialChatUi";
 
-export default function CommunicationPanel(props: {
+export default function ChatPanel(props: {
   chatData: User | null;
   isInitial: boolean;
   messageList: Message[];

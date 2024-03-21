@@ -1,6 +1,6 @@
 import React from "react";
-import { Logo } from "../../assets/logo";
-import { getCookie, logoutUser } from "../../utils";
+import { Logo } from "../assets/logo";
+import { getCookie, logoutUser } from "../utils";
 
 export default function Header() {
   const isUserLoggdIn: string | null = getCookie("isUserLoggedIn")

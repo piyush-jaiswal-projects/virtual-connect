@@ -1,12 +1,12 @@
-import ProfileIcon from "../../../lib/images/profileIcon";
-import { User } from "../../../types/User.types";
+import ProfileIcon from "../ui/images/profileIcon";
+import { User } from "../types/User.types";
 
 type UserCardProps = {
   user: User
   setActive: (args: User) => void;
 };
 
-export default function UserCard({
+export default function OnlineUserCard({
   user,
   setActive,
 }: UserCardProps) {
