@@ -1,7 +1,6 @@
 import { server } from "./app";
 import dotenv from "dotenv";
 import connectDB from "./db";
-import { createServer } from "http";
 import { io } from "./socket";
 
 dotenv.config({

@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { getCookie } from "../../utils";
+import { Socket, io } from "socket.io-client";
+
+import {getCookie, getAllCookies, createMessage} from "../../utils"
+import { useWindowWidth } from "../../utils/hooks";
+import { Message as MessageType } from '../../types/Message.types'
+import { User as UserType } from '../../types/User.types'
 import UsersList from "./userBar";
 import CommunicationPanel from "./chatPanel";
-import { Message } from "../../types/Message.types";
-import { getAllCookies } from "../../utils/getCookie";
-import { User } from "../../types/User.types";
-import createMessage from "../../utils/createMessage";
-import { Socket, io } from "socket.io-client";
-import useWindowWidth from "../../utils/hooks/useWindowWidth";
-import axios from "axios";
 
 const URL = process.env.REACT_APP_API_URL || "";
 
@@ -18,12 +16,14 @@ export default function Dashboard() {
 
   const [isInitial, setInitial] = useState<boolean>(true);
   const [currSid, setCurrSid] = useState<string>("");
-  const [activeChat, setActiveChat] = useState<User | null>(null);
-  const [messageList, setMessageList] = useState<Message[]>([]);
-  const [onlineUsers, setOnlineUsers] = useState<User[]>([]);
+  const [activeChat, setActiveChat] = useState<UserType | null>(null);
+  const [messageList, setMessageList] = useState<MessageType[]>([]);
+  const [onlineUsers, setOnlineUsers] = useState<UserType[]>([]);
 
   if (getCookie("isUserLoggedIn") !== "true") {
     window.location.replace("/");
+    // TODO instead maintain internal state to
+    // check whether user is logged in or not
   }
 
   useEffect(() => {
@@ -46,23 +46,23 @@ export default function Dashboard() {
       });
     }
 
-    function updateUserList(userList: User[]) {
+    function updateUserList(userList: UserType[]) {
       setOnlineUsers(userList);
     }
 
-    function updateMessageList(msg: Message) {
+    function updateMessageList(msg: MessageType) {
       setMessageList((list) => {
         return [...list, msg];
       });
     }
 
     socket.current?.on("connect", notifyUserConnected);
-    socket.current?.on("user-joined", (list: User[]) => updateUserList(list));
-    socket.current?.on("user-left", (list: User[]) => updateUserList(list));
-    socket.current?.on("receive-message", (msg: Message) =>
+    socket.current?.on("user-joined", (list: UserType[]) => updateUserList(list));
+    socket.current?.on("user-left", (list: UserType[]) => updateUserList(list));
+    socket.current?.on("receive-message", (msg: MessageType) =>
       updateMessageList(msg)
     );
-    socket.current?.on("message-sent", (msg: Message) =>
+    socket.current?.on("message-sent", (msg: MessageType) =>
       updateMessageList(msg)
     );
     socket.current?.on("error", (error: string) => {
@@ -80,7 +80,7 @@ export default function Dashboard() {
   }, []);
 
   const sendMessageHandler = (msg: string) => {
-    const message: Message = createMessage(msg, activeChat, currSid);
+    const message: MessageType = createMessage(msg, activeChat, currSid);
     socket.current?.emit("send-message", message);
   };
 
@@ -88,7 +88,7 @@ export default function Dashboard() {
     <div className="md:flex justify-center items-start w-[100%] h-[85vh] overflow-hidden">
       <UsersList
         users={onlineUsers.filter((user) => user.sid !== currSid)}
-        setActiveChat={(args: User) => {
+        setActiveChat={(args: UserType) => {
           setActiveChat(args);
           setInitial(false);
           if (windowWidth <= 500)

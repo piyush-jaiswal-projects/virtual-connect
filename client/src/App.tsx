@@ -14,7 +14,7 @@ const uri = process.env.REACT_APP_API_URL;
 
 function App() {
   fetch(`${uri}/`, {
-    method: "GET",
+    method: "GET", //ping to spin up the sleeping server of onrender.com
   });
 
   return (

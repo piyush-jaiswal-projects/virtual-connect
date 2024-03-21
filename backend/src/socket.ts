@@ -1,9 +1,9 @@
 import { Server } from "socket.io";
 import { server } from "./app";
 import dotenv from "dotenv";
-import { Message } from "./types/message.types";
 import deleteUserFromSocketList from "./utils/lib/deleteUserFromSocketList";
 import { saveMessageToDb } from "./utils";
+import { User, Message } from "./types";
 
 dotenv.config();
 
@@ -14,13 +14,6 @@ const io = new Server(server, {
     credentials: true,
   }
 });
-
-interface User {
-  name: string;
-  email: string;
-  uid: string;
-  sid: string;
-}
 
 var connectedUsers: User[] = [];
 

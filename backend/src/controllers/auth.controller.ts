@@ -18,15 +18,10 @@ const signup = async (req: Request, res: Response) => {
     const { name, email, password } = req.body;
 
     const isUser = await myDataSource.getRepository(userEntity).find({
-      where: [
-        {
-          name: name,
-        },
-        { email: email },
-      ],
+      where: [{ name: name }, { email: email }],
     });
 
-    if (isUser[0]) throw new ApiError(401, "User already exists!");
+    if (isUser.length !== 0) throw new ApiError(401, "User already exists!");
 
     const newUserId = createUserId(email);
     const hashedPassword = hashPassword(password);

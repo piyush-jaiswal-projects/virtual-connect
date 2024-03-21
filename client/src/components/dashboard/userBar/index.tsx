@@ -1,4 +1,4 @@
-import { ActiveUserProps, User } from "../../../types/User.types";
+import { User } from "../../../types/User.types";
 import UserCard from "./userCard";
 
 export default function OnlineList(props: {

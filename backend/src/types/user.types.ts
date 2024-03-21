@@ -8,3 +8,10 @@ export type UserData = {
   refresh_token: "";
   access_token: "";
 };
+
+export interface User {
+  name: string;
+  email: string;
+  uid: string;
+  sid: string;
+}

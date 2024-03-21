@@ -1,5 +1,5 @@
 import ProfileIcon from "../../../lib/images/profileIcon";
-import { ActiveUserProps, User } from "../../../types/User.types";
+import { User } from "../../../types/User.types";
 
 type UserCardProps = {
   user: User

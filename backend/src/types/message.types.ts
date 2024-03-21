@@ -6,7 +6,7 @@ export interface Message {
     timestamp: Date;
 }
 
-interface User {
+export interface User {
     name: string;
     uid: string;
     sid: string

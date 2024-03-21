@@ -18,7 +18,6 @@ const saveMessageToDb = async (msg: Message) => {
 
     await myDataSource.getRepository(messagesEntity).save(validatedInput.data);
     console.log("message saved!");
-    
   } catch (error) {
     console.log(`Error saving message!`);
     console.log(error);
