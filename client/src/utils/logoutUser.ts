@@ -9,7 +9,7 @@ const LogoutUser = () => {
     { name: "isUserLoggedIn", value: false },
   ]);
 
-  window.location.reload();
+  window.location.replace("/");
 };
 
 export default LogoutUser;

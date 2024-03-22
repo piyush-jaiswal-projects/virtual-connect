@@ -7,7 +7,7 @@ export default function OnlineUserList(props: {
 }) {
   
   return (
-    <div id="user-list" className="md:w-[30%] lg:w-[20%] border-r md:min-h-[85vh] p-2">
+    <div id="user-list" className="min-h-[60px] lg:min-h-[90%] w-[100%] bg-white rounded-lg p-2">
       <div className="">
         <h3>Online Users ({props.users?.length}) </h3>
       </div>

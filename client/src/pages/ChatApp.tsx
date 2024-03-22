@@ -5,15 +5,23 @@ import { getCookie, getAllCookies, createMessage } from "../utils";
 import { useWindowWidth } from "../utils/hooks";
 import { Message as MessageType } from "../types/Message.types";
 import { User as UserType } from "../types/User.types";
-import { ChatPanel, OnlineUserList } from "../components";
+import {
+  ChatPanel,
+  Footer,
+  OnlineUserList,
+  SearchUserBar,
+  VerticalBar,
+} from "../components";
 
 const URL = process.env.REACT_APP_API_URL || "";
 
 export default function ChatApp() {
   const socket = useRef<Socket>();
   const windowWidth = useWindowWidth();
+  const userId = getCookie("uid");
+  const name = getCookie("name");
 
-  const [isInitial, setInitial] = useState<boolean>(true);
+  const [isInitial, setInitial] = useState<boolean>(false);
   const [currSid, setCurrSid] = useState<string>("");
   const [activeChat, setActiveChat] = useState<UserType | null>(null);
   const [messageList, setMessageList] = useState<MessageType[]>([]);
@@ -85,23 +93,60 @@ export default function ChatApp() {
     socket.current?.emit("send-message", message);
   };
 
+  const toggleUserListpanel = () => {
+    document.getElementById("user-list-panel")?.classList.toggle("hidden");
+  };
+
   return (
-    <div className="md:flex justify-center items-start w-[100%] h-[85vh] overflow-hidden">
-      <OnlineUserList
-        users={onlineUsers.filter((user) => user.sid !== currSid)}
-        setActiveChat={(args: UserType) => {
-          setActiveChat(args);
-          setInitial(false);
-          if (windowWidth <= 500)
-            document.getElementById("user-list")?.classList.toggle("hidden");
-        }}
-      />
-      <ChatPanel
-        messageList={messageList}
-        sendMessageHandler={sendMessageHandler}
-        chatData={activeChat}
-        isInitial={isInitial}
-      />
-    </div>
+    <>
+      <div className="lg:flex justify-center items-start w-[100%] h-[100vh] lg:h-[93vh] lg:overflow-hidden bg-gray-300">
+        <VerticalBar
+          uid={userId === null ? "nullId" : userId}
+          name={name === null ? "null" : name}
+        />
+        <div
+          onClick={toggleUserListpanel}
+          className="lg:hidden h-[30px] bg-white p-1 text-center"
+        >
+          {document
+            .getElementById("user-list-panel")
+            ?.classList.contains("hidden")
+            ? "Show Users"
+            : "Hide Users"}
+        </div>
+        <div
+          id="user-list-panel"
+          className="w-[100%] lg:w-[25%] lg:flex flex-col justify-around items-center lg:h-[100%] p-2 m-0"
+        >
+          <SearchUserBar
+            userList={onlineUsers}
+            setUserList={(newList: UserType[]) => {
+              setOnlineUsers(newList);
+            }}
+          />
+          <OnlineUserList
+            users={onlineUsers.filter((user) => user.sid !== currSid)}
+            setActiveChat={(args: UserType) => {
+              setActiveChat(args);
+              setInitial(false);
+              toggleUserListpanel();
+              if (windowWidth <= 500)
+                document
+                  .getElementById("user-list")
+                  ?.classList.toggle("hidden");
+            }}
+          />
+        </div>
+        <ChatPanel
+          messageList={messageList}
+          sendMessageHandler={sendMessageHandler}
+          chatData={activeChat}
+          isInitial={isInitial}
+        />
+      </div>
+          <div className="hidden lg:block">
+          <Footer />
+      </div>
+    </>
   );
 }

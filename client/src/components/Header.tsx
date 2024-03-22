@@ -1,23 +1,23 @@
-import React from "react";
-import { Logo } from "../assets/logo";
 import { getCookie, logoutUser } from "../utils";
+import { Logo } from "../ui";
 
 export default function Header() {
-  const isUserLoggdIn: string | null = getCookie("isUserLoggedIn")
+  const isUserLoggdIn: string | null = getCookie("isUserLoggedIn");
   const userName = getCookie("name");
 
   return (
     <div
-      className="custom-shado border-b overflow-hidden p-2 px-4 md:h-[60px] w-[100vw] md:flex 
-    justify-between items-center"
+      className="border-b overflow-hidden p-2 px-4 md:h-[60px] w-[100vw] flex 
+    justify-between items-center bg-white"
     >
-      <div>
-        <a href="/">
-          <img src={Logo} alt="VIRTUAL CONNECT" width={300} height={40} />
-        </a>
+      <div className="invert overflow-hidden flex justify-center items-center">
+        <div className="lg:w-[70px]">
+          <Logo />
+        </div>
+        <h1 className="text-white text-2xl hidden lg:block">Virtual Connect</h1>
       </div>
 
-      <div className="flex justify-between border-t-2 md:border-t-0">
+      <div className="flex justify-between ">
         <a
           className="text-[1.2rem] mx-2 hover:text-gray-500 md:border text-center md:p-2 md:rounded-lg md:bg-gray-100"
           href={

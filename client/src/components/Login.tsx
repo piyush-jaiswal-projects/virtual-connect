@@ -3,6 +3,7 @@ import axios from "axios";
 import $ from "jquery";
 import { toast } from "react-toastify";
 import setCookies from "../utils/setCookies";
+import AuthHeader from "./AuthHeader";
 
 const Login = (props: any) => {
   const [credentials, setCredentials] = useState({
@@ -39,6 +40,8 @@ const Login = (props: any) => {
   };
 
   return (
+    <>
+      <AuthHeader />
     <div className="flex justify-center items-center h-[86vh]">
       <div className="p-4 w-[95vw] lg:w-[30vw] bg-white mx-auto border rounded-lg lg:translate-y-[-150px]">
         <h1 className="text-[1.8rem]">Login</h1>
@@ -89,7 +92,7 @@ const Login = (props: any) => {
         </div>
 
         <button
-          onClick={login}
+            onClick={login}
           className="bg-[black] border hover:bg-[#ffffff] hover:text-black my-2 h-[50px] w-[100%] rounded-lg p-2 text-white"
         >
           Submit
@@ -100,7 +103,8 @@ const Login = (props: any) => {
           <label className="underline cursor-pointer">Signup here</label>
         </a>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

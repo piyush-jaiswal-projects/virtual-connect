@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="flex absolute bottom-0 md:relative justify-center w-[100vw] bg-black text-white p-4">
+    <div className="flex lg:absolute bottom-0 justify-center w-[100vw] bg-black text-white p-4">
       <p className="mx-1">
-        Developed by{" "}
+        Engineered by{" "}
         <a
           className="text-blue-500"
           href="https://twitter.com/PiyushJ17317768"

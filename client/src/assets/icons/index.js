@@ -1,3 +1,7 @@
 export { default as UserIcon } from './user.svg'
 export { default as AttachFileIcon } from './attach-file.svg'
 export { default as VideoCallIcon } from './video-call.svg'
+export { default as ChatGroupIcon } from './chat-group.png'
+export { default as ChatIcon } from './bubble-chat.png'
+export { default as Arrow } from './arrow-down.png'
+export { default as ErrorIcon } from './503Error.svg'

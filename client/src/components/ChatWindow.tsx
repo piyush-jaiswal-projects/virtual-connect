@@ -10,7 +10,7 @@ export default function ChatWindow(props: {
 }) {
 
   return (
-    <div className="flex flex-col justify-between h-[80%] md:h-[90%]">
+    <div className="flex flex-col justify-between items-center h-[90%] w-[100%] rounded-lg">
       <ChatSection
         messageList={props.messageList}
         activeReceipient={props.activeRecipient}

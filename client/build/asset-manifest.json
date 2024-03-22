@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.1c334f56.css",
-    "main.js": "/static/js/main.4389021e.js",
+    "main.css": "/static/css/main.900bf28f.css",
+    "main.js": "/static/js/main.dcf5daba.js",
+    "static/media/logo-new.png": "/static/media/logo-new.dd2088630c39bae436e6.png",
     "static/media/videocall.svg": "/static/media/videocall.ea35c31b6731f8d7e26130d62bb3d94f.svg",
     "static/media/audiocall.svg": "/static/media/audiocall.4918d8229479afee0e117955fdf9ff88.svg",
     "static/media/chatting.svg": "/static/media/chatting.0d578f5c69cf5629d45bdfddfdc7841c.svg",
     "static/media/file.svg": "/static/media/file.d413d4fa944e3e36229b8d7cc7841482.svg",
     "static/media/hero3.svg": "/static/media/hero3.9c530f208327e5c056ec8b5523d8af67.svg",
-    "static/media/logo.png": "/static/media/logo.6ab2f90d3594b680990f.png",
+    "static/media/503Error.svg": "/static/media/503Error.00c9abce2b2ba903f12be3abd5a84e7f.svg",
     "static/media/attach-file.svg": "/static/media/attach-file.a7bacb3d2ddb0d7e4f5df6e70db709df.svg",
     "static/media/video-call.svg": "/static/media/video-call.8b03e6e115fe27edf68de95e92890ab2.svg",
     "static/media/user.svg": "/static/media/user.2fac1c632311b3fe114140c277c0e69e.svg",
     "index.html": "/index.html",
-    "main.1c334f56.css.map": "/static/css/main.1c334f56.css.map",
-    "main.4389021e.js.map": "/static/js/main.4389021e.js.map"
+    "main.900bf28f.css.map": "/static/css/main.900bf28f.css.map",
+    "main.dcf5daba.js.map": "/static/js/main.dcf5daba.js.map"
   },
   "entrypoints": [
-    "static/css/main.1c334f56.css",
-    "static/js/main.4389021e.js"
+    "static/css/main.900bf28f.css",
+    "static/js/main.dcf5daba.js"
   ]
 }

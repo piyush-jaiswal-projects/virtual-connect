@@ -1,6 +1,10 @@
 import { Hero } from "../assets/images";
+import { getCookie } from "../utils";
 
 export default function Home() {
+
+  const user = getCookie("name")
+
   return (
     <>
       <div className="flex flex-wrap justify-between items-center w-[90vw] min-h-[85vh] mx-auto">
@@ -19,7 +23,7 @@ export default function Home() {
 
           <div className="flex justify-center lg:justify-start items-center">
             <a
-              href="/signin"
+              href={(user?.length === 0 || user === "null") ? "/signin" : "/dashboard"}
               className="bg-[black] border hover:bg-[#ffffff] hover:text-black 
               h-[50px] w-[200px] rounded-lg mr-5 p-2 text-white text-center text-[20px]"
             >

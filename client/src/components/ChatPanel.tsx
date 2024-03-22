@@ -10,14 +10,20 @@ export default function ChatPanel(props: {
   messageList: Message[];
   sendMessageHandler: (msg: string) => void;
 }) {
-
   return (
-    <div className="md:w-[80%] h-[100%]">
+    <div className=" lg:w-[70%] h-[85%] lg:h-[100%] bg-gray-300 p-2 pb-0">
       {props.isInitial === false && (
-        <>
-          <Header name={props.chatData === null ? "" : props.chatData.name} />
-          <Chat sendMessage={props.sendMessageHandler} messageList={props.messageList} activeRecipient={props.chatData} />
-        </>
+        <div className="flex flex-col h-[100%] justify-around items-center">
+          <Header
+            name={props.chatData === null ? "" : props.chatData.name}
+            uid={props.chatData === null ? "" : props.chatData.uid}
+          />
+          <Chat
+            sendMessage={props.sendMessageHandler}
+            messageList={props.messageList}
+            activeRecipient={props.chatData}
+          />
+        </div>
       )}
 
       {props.isInitial === true && <InitialUI />}

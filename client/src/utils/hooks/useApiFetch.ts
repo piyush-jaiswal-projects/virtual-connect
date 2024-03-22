@@ -6,12 +6,16 @@ interface Result {
   data: ApiResponse | null;
   error: string | null;
   isLoading: boolean;
+  statusCode: number;
+  axiosErrorMsg: string | null;
 }
 
 const useApiFetch = (apiRoute: string): Result => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
+  const [statusCode, setStatusCode] = useState<number>(0);
+  const [axiosErrorMsg, setAxiosErrorMsg] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
@@ -20,7 +24,9 @@ const useApiFetch = (apiRoute: string): Result => {
           `${process.env.REACT_APP_API_URL}${apiRoute}`
         );
         setData(response.data);
+        setStatusCode(response.status)
       } catch (err: any) {
+        setAxiosErrorMsg(err.message)
         setError(err.message || "An err occurred");
       } finally {
         setLoading(false);
@@ -34,6 +40,8 @@ const useApiFetch = (apiRoute: string): Result => {
     data,
     error,
     isLoading,
+    statusCode,
+    axiosErrorMsg
   };
 };
 

@@ -6,8 +6,7 @@ export default function InitialChatUI() {
       <div>
         <img src={Chatting} alt="" />
         <p className="text-center">
-          Please select online user from sidebar <br />
-          to start chatting
+          Select User to start chatting
         </p>
       </div>
     </div>

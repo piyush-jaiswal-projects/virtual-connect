@@ -3,7 +3,7 @@ export { default as FeaturesCard } from "./FeaturesCard";
 export { default as Footer } from "./Footer";
 export { default as Header } from "./Header";
 export { default as SignupForm } from "./Signup";
-export { default as VerifyOtpForm } from "./VeridyOtpForm";
+export { default as VerifyOtpForm } from "./VerifyOtpForm";
 export { default as Otp } from "./Otp";
 export { default as LoginForm } from "./Login";
 export { default as ChatBar } from "./ChatBar";
@@ -16,3 +16,9 @@ export { default as OnlineUserCard } from "./OnlineUserCard";
 export { default as OnlineUserList } from "./OnlineUserList";
 export { default as SentMsgCard } from "./SentMsgCard";
 export { default as ReceivedMsgCard } from "./ReceivedMsgCard";
+export { default as VerticalBar } from './VerticalBar'
+export { default as SearchUserBar } from './SearchUserBar'
+export { default as AuthHeader } from './AuthHeader'
+export { default as ProfileInfo } from './ProfileInfo'
+export { default as ProfileSettings } from './ProfileSettings'
+export { default as AppOptions } from './AppOptions'
